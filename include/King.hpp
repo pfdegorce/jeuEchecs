@@ -1,5 +1,8 @@
+#pragma once
+
 #include "main.hpp"
 #include "Piece.hpp"
+
 
 class King : public Piece
 {
@@ -8,4 +11,6 @@ private:
 public:
     King() = default;
     ~King() = default;
+    bool valid_move(int x, int y);
+
 };
