@@ -1,12 +1,10 @@
 #include "../include/Piece.hpp"
 
 
-Piece::Piece(/* args */)
-{
+Piece::Piece(int x, int y, bool b) : x_(x), y_(y), color_(b){
 }
 
-Piece::~Piece()
-{
+Piece::~Piece(){
 }
 
 int Piece::get_x() const {
@@ -23,6 +21,10 @@ int Piece::get_y() const {
 
 void Piece::set_y(int y){
     y_=y;
+}
+
+bool get_color() const{
+    return color_;
 }
 
 bool Piece::outside_board(int x, int y){
