@@ -2,6 +2,7 @@
 
 #include "main.hpp"
 #include "Piece.hpp"
+#include "ChessBoard.hpp"
 
 
 class King : public Piece
@@ -11,6 +12,6 @@ private:
 public:
     King() = default;
     ~King() = default;
-    bool valid_move(int x, int y);
+    bool valid_move(int x, int y, ChessBoard board);
 
 };

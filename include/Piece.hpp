@@ -1,6 +1,7 @@
 #pragma once
 
 #include "main.hpp"
+#include "ChessBoard.hpp"
 
 class Piece
 {
@@ -19,7 +20,7 @@ public:
     void set_y(int y);
     bool get_color() const;
 
-    bool valid_move(int x, int y) = 0;
+    bool valid_move(int x, int y, ChessBoard board) = 0;
     bool outside_board(int x, int y);
     bool same_place(int x, int y);
     void move(int x, int y);
