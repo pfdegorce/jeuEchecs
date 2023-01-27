@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool Pawn::valid_move(int x, int y, ChessBoard board){
+bool Pawn::valid_move(int x, int y){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;
