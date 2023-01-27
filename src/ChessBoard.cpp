@@ -34,3 +34,50 @@ ChessBoard::ChessBoard(){
         list_piece_[24+i] = new Pawn(7, i, true);
     }
 }
+
+ChessBoard& ChessBoard::operator=(const ChessBoard& cb){
+    board_ = cb.board_;
+    list_piece_ = cb.list_piece_;
+}
+
+void ChessBoard::print(){
+    for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
+        for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
+            switch (typeid(board_[x][y]).name())
+            {
+            case "Tower":
+                cout << "T  ";
+                break;
+            case "Bishop":
+                cout << "B  ";
+                break;
+            case "Knight":
+                cout << "H  ";
+                break; 
+            case "Queen":
+                cout << "Q  ";
+                break;   
+            case "King":
+                cout << "K ";
+                break;
+             case "Pawn":
+                cout << "P ";
+                break;
+            
+            default:
+                cout << ". ";
+                break;
+            }
+            
+        }
+        
+    }
+    
+}
+
+bool ChessBoard::is_free(int x, int y){
+    if(board_[x][y] == nullptr){
+        return true;
+    }
+    return false;
+}

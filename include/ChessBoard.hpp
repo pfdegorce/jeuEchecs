@@ -18,9 +18,11 @@ private:
 public:
     ChessBoard();
     ~ChessBoard() = default;
+    ChessBoard& operator=(const ChessBoard& cb);
 
     void print();
     bool check_play(int x1, int y1, int x2, int y2);
     void play(int x1, int y1, int x2, int y2);
+    bool is_free(int x, int y);
 };
 
