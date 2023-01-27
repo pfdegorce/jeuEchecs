@@ -1,3 +1,4 @@
+
 #include "../include/Queen.hpp"
 
 using namespace std;
