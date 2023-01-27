@@ -1,3 +1,5 @@
+#pragma once
+
 #include "main.hpp"
 #include "Piece.hpp"
 
@@ -8,4 +10,5 @@ private:
 public:
     Bishop() = default;
     ~Bishop() = default;
+    bool valid_move(int x, int y);
 };

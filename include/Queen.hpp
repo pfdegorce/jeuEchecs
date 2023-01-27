@@ -1,3 +1,5 @@
+#pragma once
+
 #include "main.hpp"
 #include "Piece.hpp"
 
@@ -8,4 +10,6 @@ private:
 public:
     Queen() = default;
     ~Queen() = default;
+    bool valid_move(int x, int y);
+
 };
