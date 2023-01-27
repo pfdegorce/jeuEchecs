@@ -14,7 +14,7 @@
 class ChessBoard{
 private:
     Piece* board_[CHESSBOARD_SIZE][CHESSBOARD_SIZE];
-    Piece list_piece_[4*CHESSBOARD_SIZE];
+    Piece* list_piece_[4*CHESSBOARD_SIZE];
 public:
     ChessBoard();
     ~ChessBoard() = default;

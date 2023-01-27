@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool Knight::valid_move(int x, int y, ChessBoard board){
+bool Knight::valid_move(int x, int y, Piece* board){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;
@@ -12,10 +12,10 @@ bool Knight::valid_move(int x, int y, ChessBoard board){
         return false;
     }
     if(abs(x - get_x()) == 1 || abs(y - get_y()) == 2){
-        if(board.is_free(x,y)){
+        if(board_.is_free(x,y)){
             return true;
         }
-        else if(board[x][y]->get_color() != get_color()){
+        else if(board_[x][y]->get_color() != get_color()){
             return true;
         };
         return false;
@@ -26,3 +26,5 @@ bool Knight::valid_move(int x, int y, ChessBoard board){
     cout << "invalid move - move not autorized" << endl;
     return false;
 }
+
+Knight::Knight(int x, int y, bool b): Piece(x, y, b){}

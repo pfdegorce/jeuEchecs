@@ -17,3 +17,5 @@ bool Tower::valid_move(int x, int y, ChessBoard board){
     cout << "invalid move - move not autorized" << endl;
     return false;
 }
+
+Tower::Tower(int x, int y, bool b): Piece(x, y, b){}

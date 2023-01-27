@@ -9,7 +9,8 @@ class Knight : public Piece
 private:
     /* data */
 public:
-    Knight() = default;
+    Knight() = delete;
+    Knight(int x, int y, bool c);
     ~Knight() = default;
-    bool valid_move(int x, int y, ChessBoard board);
+    bool valid_move(int x, int y);
 };

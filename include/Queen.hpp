@@ -9,8 +9,9 @@ class Queen : public Piece
 private:
     /* data */
 public:
-    Queen() = default;
+    Queen() = delete;
+    Queen(int x, int y, bool b);
     ~Queen() = default;
-    bool valid_move(int x, int y, ChessBoard board);
+    bool valid_move(int x, int y);
 
 };

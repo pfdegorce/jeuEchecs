@@ -1,6 +1,9 @@
 #include "../include/ChessBoard.hpp"
 
-ChessBoard::ChessBoard(){
+using namespace std;
+
+
+ChessBoard::ChessBoard() : board_(), list_piece_() {
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
         for (size_t j = 0; j < CHESSBOARD_SIZE; j++){
             board_[i][j] = nullptr;
@@ -33,46 +36,50 @@ ChessBoard::ChessBoard(){
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
         list_piece_[24+i] = new Pawn(7, i, true);
     }
+    cout << "Hello World" << endl;
 }
 
-ChessBoard& ChessBoard::operator=(const ChessBoard& cb){
-    board_ = cb.board_;
-    list_piece_ = cb.list_piece_;
-}
-
-void ChessBoard::print(){
-    for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
-        for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
-            switch (typeid(board_[x][y]).name())
-            {
-            case "Tower":
-                cout << "T  ";
-                break;
-            case "Bishop":
-                cout << "B  ";
-                break;
-            case "Knight":
-                cout << "H  ";
-                break; 
-            case "Queen":
-                cout << "Q  ";
-                break;   
-            case "King":
-                cout << "K ";
-                break;
-             case "Pawn":
-                cout << "P ";
-                break;
-            
-            default:
-                cout << ". ";
-                break;
-            }
-            
+/*ChessBoard& ChessBoard::operator=(const ChessBoard& cb){
+    for(int i = 0; i < CHESSBOARD_SIZE; i++) {
+        for(int j = 0; j < CHESSBOARD_SIZE; j++) {
+            delete board_[i][j];
         }
-        
     }
-    
+    for(int i = 0; i < 4*CHESSBOARD_SIZE; i++) {
+        delete list_piece_[i];
+    }
+    for(int i = 0; i < CHESSBOARD_SIZE; i++) {
+        for(int j = 0; j < CHESSBOARD_SIZE; j++) {
+            board_[i][j] = cb.board_[i][j]->clone();
+        }
+    }
+    for(int i = 0; i < 4*CHESSBOARD_SIZE; i++) {
+        list_piece_[i] = cb.list_piece_[i]->clone();
+    }
+    return *this;
+}*/
+
+void ChessBoard::print() {
+    for (size_t i = 0; i < CHESSBOARD_SIZE; i++) {
+        for (size_t j = 0; j < CHESSBOARD_SIZE; j++) {
+            if (dynamic_cast<Tower*>(board_[i][j])) {
+                cout << "T ";
+            } else if (dynamic_cast<Bishop*>(board_[i][j])) {
+                cout << "B ";
+            } else if (dynamic_cast<Knight*>(board_[i][j])) {
+                cout << "H ";
+            } else if (dynamic_cast<Queen*>(board_[i][j])) {
+                cout << "Q ";
+            } else if (dynamic_cast<King*>(board_[i][j])) {
+                cout << "K ";
+            } else if (dynamic_cast<Pawn*>(board_[i][j])) {
+                cout << "P ";
+            } else {
+                cout << ". ";
+            }
+        }
+    cout << endl;
+    }
 }
 
 bool ChessBoard::is_free(int x, int y){

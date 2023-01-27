@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool King::valid_move(int x, int y, ChessBoard board){
+bool King::valid_move(int x, int y){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;
@@ -23,3 +23,5 @@ bool King::valid_move(int x, int y, ChessBoard board){
     cout << "invalid move - move not autorized" << endl;
     return false;
 }
+
+King::King(int x, int y, bool b): Piece(x, y, b){}

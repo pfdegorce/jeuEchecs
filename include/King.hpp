@@ -10,8 +10,9 @@ class King : public Piece
 private:
     /* data */
 public:
-    King() = default;
+    King() = delete;
+    King(int x, int y, bool c);
     ~King() = default;
-    bool valid_move(int x, int y, ChessBoard board);
+    bool valid_move(int x, int y);
 
 };

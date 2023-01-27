@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool Bishop::valid_move(int x, int y, ChessBoard board){
+bool Bishop::valid_move(int x, int y){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;
@@ -16,3 +16,5 @@ bool Bishop::valid_move(int x, int y, ChessBoard board){
     }
     return false;
 }
+
+Bishop::Bishop(int x, int y, bool b): Piece(x, y, b){}

@@ -14,3 +14,5 @@ bool Pawn::valid_move(int x, int y, ChessBoard board){
     cout << "invalid move - move not autorized" << endl;
     return false;
 }
+
+Pawn::Pawn(int x, int y, bool b): Piece(x, y, b){}
