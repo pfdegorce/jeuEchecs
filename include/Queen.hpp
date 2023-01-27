@@ -1,0 +1,11 @@
+#include "main.hpp"
+#include "Piece.hpp"
+
+class Queen : public Piece
+{
+private:
+    /* data */
+public:
+    Queen() = default;
+    ~Queen() = default;
+};

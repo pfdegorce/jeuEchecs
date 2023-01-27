@@ -21,12 +21,28 @@ ifeq ($(OPTI), 1)
 endif
 
 SRC_PATH=src/
-SRC_NAME=main.cpp
+SRC_NAME=main.cpp\
+    Bioshop.cpp\
+    CheessBoard.cpp\
+    King.cpp\
+    Knight.cpp\
+    Pawn.cpp\
+    Piece.cpp\
+    Queen.cpp\
+    Tower.cpp
 
 SRC=$(addprefix $(SRC_PATH), $(SRC_NAME))
 
 INC_PATH=include/
-INC_NAME=main.hpp
+INC_NAME=main.hpp\
+    Bioshop.hpp\
+    CheessBoard.hpp\
+    King.hpp\
+    Knight.hpp\
+    Pawn.hpp\
+    Piece.hpp\
+    Queen.hpp\
+    Tower.hpp
 
 INC=$(addprefix $(INC_PATH), $(INC_NAME))
 
