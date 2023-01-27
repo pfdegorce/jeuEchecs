@@ -1,11 +1,22 @@
-#include "main.hpp"
+#pragma once
 
-class ChessBoard
-{
+#include "main.hpp"
+#include "Piece.hpp"
+#include "Bishop.hpp"
+#include "King.hpp"
+#include "Knight.hpp"
+#include "Pawn.hpp"
+#include "Queen.hpp"
+#include "Tower.hpp"
+
+#define CHESSBOARD_SIZE 8 //Don't update this const
+
+class ChessBoard{
 private:
-    /* data */
+    Piece* board_[CHESSBOARD_SIZE][CHESSBOARD_SIZE];
+    Piece list_piece_[4*CHESSBOARD_SIZE];
 public:
-    ChessBoard() = default;
+    ChessBoard();
     ~ChessBoard() = default;
 
     void print();
