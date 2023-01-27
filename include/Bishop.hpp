@@ -8,5 +8,5 @@ public:
     Bishop() = delete;
     Bishop(int x, int y, bool c);
     ~Bishop() = default;
-    bool valid_move(int x, int y);
+    bool valid_move(int x, int y, Piece* board[8][8]);
 };

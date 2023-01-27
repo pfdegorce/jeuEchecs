@@ -2,9 +2,8 @@
 
 using namespace std;
 
-Tower::Tower(int x, int y, bool b): Piece(x, y, b){}
+bool Tower::valid_move(int x, int y, Piece* board[8][8]){
 
-bool Tower::valid_move(int x, int y){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;

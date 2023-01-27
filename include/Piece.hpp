@@ -18,8 +18,8 @@ public:
     void set_y(int y);
     bool get_color() const;
 
-    virtual bool valid_move(int x, int y) = 0;
-    
+    virtual bool valid_move(int x, int y, Piece* board[8][8]) = 0;
+
     bool outside_board(int x, int y);
     bool same_place(int x, int y);
     void move(int x, int y);
