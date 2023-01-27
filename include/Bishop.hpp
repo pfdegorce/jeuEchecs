@@ -2,9 +2,8 @@
 
 #include "main.hpp"
 #include "Piece.hpp"
-class Blabla{};
 
-class Bishop : public Blabla {
+class Bishop : public Piece {
 public:
     Bishop() = delete;
     Bishop(int x, int y, bool c);
