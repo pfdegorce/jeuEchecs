@@ -2,8 +2,7 @@
 
 #include "main.hpp"
 
-class Piece
-{
+class Piece{
 private:
     size_t x_; //pos x
     size_t y_; //pos y

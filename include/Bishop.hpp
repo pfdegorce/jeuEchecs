@@ -3,10 +3,7 @@
 #include "main.hpp"
 #include "Piece.hpp"
 
-class Bishop : public Piece
-{
-private:
-    /* data */
+class Bishop : public Piece {
 public:
     Bishop() = delete;
     Bishop(int x, int y, bool c);

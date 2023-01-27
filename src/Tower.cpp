@@ -3,6 +3,7 @@
 using namespace std;
 
 bool Tower::valid_move(int x, int y, Piece* board[8][8]){
+
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;
@@ -17,5 +18,3 @@ bool Tower::valid_move(int x, int y, Piece* board[8][8]){
     cout << "invalid move - move not autorized" << endl;
     return false;
 }
-
-Tower::Tower(int x, int y, bool b): Piece(x, y, b){}
