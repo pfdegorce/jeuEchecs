@@ -8,4 +8,6 @@ private:
 public:
     King() = default;
     ~King() = default;
+    bool valid_move(int x, int y);
+
 };

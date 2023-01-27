@@ -8,4 +8,6 @@ private:
 public:
     Queen() = default;
     ~Queen() = default;
+    bool valid_move(int x, int y);
+
 };
