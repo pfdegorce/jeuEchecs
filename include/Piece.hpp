@@ -1,3 +1,5 @@
+#pragma once
+
 #include "main.hpp"
 
 class Piece
@@ -10,6 +12,12 @@ public:
     Piece() = default;
     ~Piece() = default;
     Piece(int x, int y, bool c);
-    virtual bool valid_move(int x, int y) = 0;
+    int get_x() const;
+    void set_x(int x);
+    int get_y() const;
+    void set_y(int y);
+    bool valid_move(int x, int y) = 0;
+    bool outside_board(int x, int y);
+    bool same_place(int x, int y);
     void move(int x, int y);
 };

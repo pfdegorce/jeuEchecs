@@ -1,5 +1,8 @@
+#pragma once
+
 #include "main.hpp"
 #include "Piece.hpp"
+
 
 class King : public Piece
 {
