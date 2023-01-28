@@ -11,11 +11,25 @@ bool Queen::valid_move(int x, int y, Piece* board[8][8]){
         cout << "invalid move - the piece doesn't move" << endl;
         return false;
     }
+    //If we want to move this piece on a diagonal
     if(abs(x - get_x()) == abs(y - get_y())){
-        return true;
+        if(check_diagonal(get_x(), get_y(), x, y, board)){
+            cout << "invalid move - there is a piece on your way" << endl;
+            return false;
+        }
+        if(board[x][y]==nullptr || (board[x][y]->get_color() != get_color())){
+            return true;
+        }
     }
-    if(abs(x - get_x()) == 0 || abs(y - get_y()) == 0){
-        return true;
+    //If we want to move this piece horizontally or vertically
+    if((x - get_x()) == 0 || (y - get_y()) == 0){
+        if(check_lines(get_x(), get_y(), x, y, board)){
+            cout << "invalid move - there is a piece on your way" << endl;
+            return false;
+        }
+        if(board[x][y]==nullptr || (board[x][y]->get_color() != get_color())){
+            return true;
+        }
     }
     cout << "invalid move - move not autorized" << endl;
     return false;

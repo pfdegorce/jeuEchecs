@@ -37,3 +37,98 @@ bool Piece::same_place(int x, int y){
     }
     return false;
 }
+
+bool check_diagonal(int x1, int y1, int x2, int y2 Piece* board[8][8]){
+    //If we want to move from (x1,y1) to (x2,y2) on the superior right diagonal 
+        if((x2 - x1)<0 && (y2 - y1>0)){
+            int i=1;
+            while(i<abs(x2- x1)){
+                if(board[x1-i][y1+i] != nullptr){
+                    return true;
+                }
+                i++;
+            }
+        }
+    //If we want to move from (x1,y1) to (x2,y2) on the superior left diagonal 
+        if((x2 - x1())<0 && (y2 - y1)<0){
+            int i=1;
+            while(i<abs(x2 - x1)){
+                if(board[x1-i][y1-i] != nullptr){
+                    return true;
+                }
+                i++;
+            }
+        }
+    //If we want to move from (x1,y1) to (x2,y2) on the inferior right diagonal 
+        if((x2 - x1)>0 && (y2 - y1)>0 ){
+            int i=1;
+            while(i<abs(x2 - x1)){
+                if(board[x1+i][y1+i] != nullptr){
+                    return true;
+                }
+                i++;
+            }
+        }
+    //If we want to move from (x1,y1) to (x2,y2) on the inferior left diagonal 
+        if((x2 - x1)>0 && (y2 - y1)<0 ){
+            int i=1;
+            while(i<abs(x2 - x1)){
+                if(board[x1+i][x2-i] != nullptr){
+                    return true;
+                }
+                i++;
+            }
+        }
+    return false;
+}
+
+bool check_lines(int x1, int y1, int x2, int y2 Piece* board[8][8]) {
+
+    //If we want to move from (x1,y1) to (x2,y2) horizontally
+
+    //If we want to move on the right
+        if((x2 - x1)==0 && (y2 - y1>0)){
+            int i=1;
+            while(i<abs(y2 - y1)){
+                if(board[x1][y1+i] != nullptr){
+                    return true;
+                }
+                i++;
+            }
+        }
+    //If we want to move on the left
+        if((x2 - x1)==0 && (y2 - y1)<0){
+            int i=1;
+            while(i<abs(y2 - y1)){
+                if(board[x1][y1-i] != nullptr){
+                    return true;
+                }
+                i++;
+            }
+        }
+
+    //If we want to move from (x1,y1) to (x2,y2) horizontally
+
+    //If we want to move the piece up
+        if((x2 - x1)<0 && (y2 - y1)==0 ){
+            int i=1;
+            while(i<abs(x2 - x1)){
+                if(board[x1-i][y1] != nullptr){
+                    return true;
+                }
+                i++;
+            }
+        }
+    //If we want to move the piece down 
+        if((x2 - x1)>0 && (y2 - y1)==0 ){
+            int i=1;
+            while(i<abs(x2 - x1)){
+                if(board[x1+i][y1] != nullptr){
+                    return true;
+                }
+                i++;
+            }
+        }
+        return false;
+}
+
