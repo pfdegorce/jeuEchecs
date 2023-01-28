@@ -10,12 +10,12 @@ ChessBoard::ChessBoard(string board_str) : board_(), list_piece_() {
 ChessBoard::ChessBoard() : board_(), list_piece_() {
     std::string board_str = 
     "THBQKHB\n"
-    "ppppppp\n"
-    "........\n"
-    "........\n"
-    "........\n"
-    "........\n"
     "PPPPPPP\n"
+    "........\n"
+    "........\n"
+    "........\n"
+    "........\n"
+    "ppppppp\n"
     "thbqkhb\n";
     init_board(board_str);
 }
