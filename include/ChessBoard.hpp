@@ -1,7 +1,5 @@
 #pragma once
 
-#include "main.hpp"
-#include "Piece.hpp"
 #include "Bishop.hpp"
 #include "King.hpp"
 #include "Knight.hpp"

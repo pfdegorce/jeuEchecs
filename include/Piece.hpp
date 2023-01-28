@@ -8,7 +8,6 @@ private:
     size_t y_; //pos y
     bool color_; //white = false, black = true
 public:
-    Piece() = delete;
     Piece(int x, int y, bool c);
     ~Piece() = default;
 

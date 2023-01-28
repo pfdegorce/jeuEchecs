@@ -9,10 +9,12 @@ bool Bishop::valid_move(int x, int y, Piece* board[8][8]){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;
     }
+
     if (same_place(x,y)){
         cout << "invalid move - the piece doesn't move" << endl;
         return false;
     }
+
     if(abs(x - get_x()) == abs(y - get_y())){
         if((x - get_x())<0 && (y - get_y()>0)){
             int i=1;
@@ -23,6 +25,7 @@ bool Bishop::valid_move(int x, int y, Piece* board[8][8]){
                 i++;
             }
         }
+
         if((x - get_x())<0 && (y - get_y()<0)){
             int i=1;
             while(i<abs(x- get_x())){
@@ -32,6 +35,7 @@ bool Bishop::valid_move(int x, int y, Piece* board[8][8]){
                 i++;
             }
         }
+
         if((x - get_x())>0 && (y - get_y())>0 ){
             int i=1;
             while(i<abs(x- get_x())){
@@ -41,6 +45,7 @@ bool Bishop::valid_move(int x, int y, Piece* board[8][8]){
                 i++;
             }
         }
+
         if((x - get_x())>0 && (y - get_y())<0 ){
             int i=1;
             while(i<abs(x- get_x())){
@@ -50,9 +55,13 @@ bool Bishop::valid_move(int x, int y, Piece* board[8][8]){
                 i++;
             }
         }
+
         if(board[x][y]==nullptr || (board[x][y]->get_color() != get_color())){
             return true;
+        }
+            
     }
+    
     cout << "invalid move - move not autorized" << endl;
     return false;
 }

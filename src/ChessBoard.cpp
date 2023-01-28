@@ -70,7 +70,6 @@ ChessBoard::ChessBoard() : board_(), list_piece_() {
         list_piece_[24+i] = new Pawn(6, i, true);
         board_[6][i] = list_piece_[24+i];
     }
-    cout << "Hello World" << endl;
 }
 
 /*ChessBoard& ChessBoard::operator=(const ChessBoard& cb){
