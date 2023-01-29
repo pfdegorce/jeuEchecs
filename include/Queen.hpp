@@ -2,7 +2,6 @@
 
 #include "main.hpp"
 #include "Piece.hpp"
-#include "ChessBoard.hpp"
 
 class Queen : public Piece
 {

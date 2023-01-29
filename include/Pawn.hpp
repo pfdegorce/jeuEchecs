@@ -9,7 +9,7 @@ private:
     bool already_moved_;
 public:
     Pawn() = delete;
-    Pawn(int x, int y, bool c);
+    Pawn(int x, int y, bool color, bool moved);
     ~Pawn() = default;
     bool valid_move(int x, int y, Piece* board[8][8]);
 };
