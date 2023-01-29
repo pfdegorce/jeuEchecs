@@ -28,6 +28,7 @@ SRC_NAME=main.cpp\
 		Knight.cpp\
 		Pawn.cpp\
 		Piece.cpp\
+		Player.cpp\
 		Queen.cpp\
 		Tower.cpp
 
@@ -41,6 +42,7 @@ INC_NAME=main.hpp\
 		Knight.hpp\
 		Pawn.hpp\
 		Piece.hpp\
+		Player.hpp\
 		Queen.hpp\
 		Tower.hpp
 
