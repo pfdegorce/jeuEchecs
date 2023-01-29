@@ -38,7 +38,7 @@ bool Piece::same_place(int x, int y){
     return false;
 }
 
-bool check_diagonal(int x1, int y1, int x2, int y2 Piece* board[8][8]){
+bool Piece::check_diagonal(int x1, int y1, int x2, int y2, Piece* board[8][8]){
     //If we want to move from (x1,y1) to (x2,y2) on the superior right diagonal 
         if((x2 - x1)<0 && (y2 - y1>0)){
             int i=1;
@@ -50,7 +50,7 @@ bool check_diagonal(int x1, int y1, int x2, int y2 Piece* board[8][8]){
             }
         }
     //If we want to move from (x1,y1) to (x2,y2) on the superior left diagonal 
-        if((x2 - x1())<0 && (y2 - y1)<0){
+        if((x2 - x1)<0 && (y2 - y1)<0){
             int i=1;
             while(i<abs(x2 - x1)){
                 if(board[x1-i][y1-i] != nullptr){
@@ -82,7 +82,7 @@ bool check_diagonal(int x1, int y1, int x2, int y2 Piece* board[8][8]){
     return false;
 }
 
-bool check_lines(int x1, int y1, int x2, int y2 Piece* board[8][8]) {
+bool Piece::check_lines(int x1, int y1, int x2, int y2, Piece* board[8][8]) {
 
     //If we want to move from (x1,y1) to (x2,y2) horizontally
 

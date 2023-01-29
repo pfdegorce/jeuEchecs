@@ -1,14 +1,9 @@
 #pragma once
 
-#include "main.hpp"
 #include "Piece.hpp"
 
-class Tower : public Piece
-{
-private:
-    /* data */
+class Tower : public Piece{
 public:
-    Tower() = delete;
     Tower(int x, int y, bool b);
     ~Tower() = default;
     bool valid_move(int x, int y, Piece* board[8][8]);

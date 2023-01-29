@@ -62,12 +62,12 @@ ChessBoard::ChessBoard() : board_(), list_piece_() {
 
     
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
-        list_piece_[16+i] = new Pawn(1, i, false);
+        list_piece_[16+i] = new Pawn(1, i, false, false);
         board_[1][i] = list_piece_[16+i];
     }
     
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
-        list_piece_[24+i] = new Pawn(6, i, true);
+        list_piece_[24+i] = new Pawn(6, i, true, false);
         board_[6][i] = list_piece_[24+i];
     }
     cout << "Hello World" << endl;
