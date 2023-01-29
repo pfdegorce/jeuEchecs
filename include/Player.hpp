@@ -13,5 +13,6 @@ public:
 
     bool get_color() const;
 
-    void play_move();
+    void play_move(int x1, int y1, int x2, int y2);
+    std::array<int,4> give_move();
 };
