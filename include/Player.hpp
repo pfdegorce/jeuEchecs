@@ -5,10 +5,10 @@
 
 class Player{
 private:
-    string name_;
+    std::string name_;
     bool color_; //white = false, black = true
 public:
-    Player(string name, bool c);
+    Player(std::string name, bool c);
     ~Player() = default;
 
     bool get_color() const;
