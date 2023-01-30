@@ -11,14 +11,15 @@ bool Game::get_player() const{
 bool Game::in_check(){
     int king_x, king_y;
     for(int i = 0; i<32 ;i++){
-        if ((typeid(**chessboard_.get_list_piece()[i]) == typeid(King)) && ((**chessboard_.get_list_piece()[i]).get_color()==player_)){
-            king_x = (**chessboard_.get_list_piece()).get_x();
-            king_y = (**chessboard_.get_list_piece()).get_y();
+        if ((typeid(*chessboard_.get_list_piece()[i]) == typeid(King)) && ((*chessboard_.get_list_piece()[i]).get_color()==player_)){
+            king_x = (*chessboard_.get_list_piece())->get_x();
+            king_y = (*chessboard_.get_list_piece())->get_y();
         }
+    }
     for(int i = 0; i<32 ;i++){
-        if (((**chessboard_.get_list_piece()[i]).valid_move(king_x, king_y, chessboard.get_board())) && ((**chessboard_.get_list_piece()[i]).get_color()!=player_)){
+        if (((*chessboard_.get_list_piece()[i]).valid_move(king_x, king_y, chessboard_.get_board())) && ((*chessboard_.get_list_piece()[i]).get_color()!=player_)){
             return true;
         }
     }
     return false;
-}
+    }

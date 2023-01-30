@@ -1,4 +1,5 @@
 #include "../include/main.hpp"
+#include "../include/ChessBoard.hpp"
 
 using namespace std;
 
