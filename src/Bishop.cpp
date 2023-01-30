@@ -14,52 +14,16 @@ bool Bishop::valid_move(int x, int y, Piece* board[8][8]){
         cout << "invalid move - the piece doesn't move" << endl;
         return false;
     }
-
+    //If we want to move this piece on a diagonal
     if(abs(x - get_x()) == abs(y - get_y())){
-        if((x - get_x())<0 && (y - get_y()>0)){
-            int i=1;
-            while(i<abs(x- get_x())){
-                if(board[get_x()-i][get_y()+i] != nullptr){
-                    return false;
-                }
-                i++;
-            }
-        }
-
-        if((x - get_x())<0 && (y - get_y()<0)){
-            int i=1;
-            while(i<abs(x- get_x())){
-                if(board[get_x()-i][get_y()-i] != nullptr){
-                    return false;
-                }
-                i++;
-            }
-        }
-
-        if((x - get_x())>0 && (y - get_y())>0 ){
-            int i=1;
-            while(i<abs(x- get_x())){
-                if(board[get_x()+i][get_y()+i] != nullptr){
-                    return false;
-                }
-                i++;
-            }
-        }
-
-        if((x - get_x())>0 && (y - get_y())<0 ){
-            int i=1;
-            while(i<abs(x- get_x())){
-                if(board[get_x()+i][get_y()-i] != nullptr){
-                    return false;
-                }
-                i++;
-            }
+        if(check_diagonal(get_x(), get_y(), x, y, board)){
+            cout << "invalid move - there is a piece on your way" << endl;
+            return false;
         }
 
         if(board[x][y]==nullptr || (board[x][y]->get_color() != get_color())){
             return true;
         }
-            
     }
     
     cout << "invalid move - move not autorized" << endl;

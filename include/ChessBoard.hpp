@@ -18,6 +18,9 @@ public:
     ~ChessBoard() = default;
     ChessBoard& operator=(const ChessBoard& cb);
 
+    Piece** get_board();
+    Piece** get_list_piece();
+
     void print();
     bool check_play(int x1, int y1, int x2, int y2);
     void play(int x1, int y1, int x2, int y2);

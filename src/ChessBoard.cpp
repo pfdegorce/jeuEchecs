@@ -2,6 +2,13 @@
 
 using namespace std;
 
+Piece** ChessBoard::get_board(){
+    return board_;
+}
+
+Piece** ChessBoard::get_list_piece(){
+    return list_piece_;
+}
 
 ChessBoard::ChessBoard() : board_(), list_piece_() {
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
@@ -62,12 +69,12 @@ ChessBoard::ChessBoard() : board_(), list_piece_() {
 
     
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
-        list_piece_[16+i] = new Pawn(1, i, false);
+        list_piece_[16+i] = new Pawn(1, i, false, false);
         board_[1][i] = list_piece_[16+i];
     }
     
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
-        list_piece_[24+i] = new Pawn(6, i, true);
+        list_piece_[24+i] = new Pawn(6, i, true, false);
         board_[6][i] = list_piece_[24+i];
     }
 }

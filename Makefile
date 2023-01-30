@@ -24,10 +24,12 @@ SRC_PATH=src/
 SRC_NAME=main.cpp\
 		Bishop.cpp\
 		ChessBoard.cpp\
+		Game.cpp\
 		King.cpp\
 		Knight.cpp\
 		Pawn.cpp\
 		Piece.cpp\
+		Player.cpp\
 		Queen.cpp\
 		Tower.cpp
 
@@ -37,10 +39,12 @@ INC_PATH=include/
 INC_NAME=main.hpp\
 		Bishop.hpp\
 		ChessBoard.hpp\
+		Game.hpp\
 		King.hpp\
 		Knight.hpp\
 		Pawn.hpp\
 		Piece.hpp\
+		Player.hpp\
 		Queen.hpp\
 		Tower.hpp
 
