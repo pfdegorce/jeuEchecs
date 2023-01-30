@@ -2,6 +2,8 @@
 
 using namespace std;
 
+Knight::Knight(int x, int y, bool b): Piece(x, y, b){}
+
 bool Knight::valid_move(int x, int y, Piece* board[8][8]){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
@@ -25,4 +27,3 @@ bool Knight::valid_move(int x, int y, Piece* board[8][8]){
     return false;
 }
 
-Knight::Knight(int x, int y, bool b): Piece(x, y, b){}

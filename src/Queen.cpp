@@ -33,6 +33,8 @@ bool Queen::valid_move(int x, int y, Piece* board[8][8]){
             return true;
         }
     }
+    cout << board[0][0] << endl;
     cout << "invalid move - move not autorized" << endl;
     return false;
 }
+
