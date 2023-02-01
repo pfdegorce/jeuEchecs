@@ -1,6 +1,6 @@
 #pragma once
 
-#include "main.hpp"
+#include "libs.hpp"
 #include "ChessBoard.hpp"
 
 class Game{

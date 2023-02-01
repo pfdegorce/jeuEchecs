@@ -1,5 +1,6 @@
 #pragma once
 
+#include "libs.hpp"
 #include "Piece.hpp"
 
 class Queen : public Piece{

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "libs.hpp"
 #include "Bishop.hpp"
 #include "King.hpp"
 #include "Knight.hpp"
