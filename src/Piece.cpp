@@ -82,7 +82,7 @@ bool Piece::check_diagonal(int x1, int y1, int x2, int y2, Piece* board[8][8]){
     return false;
 }
 
-bool Piece::check_lines(int x1, int y1, int x2, int y2, Piece* board[8][8]) {
+bool Piece::check_lines(int x1, int y1, int x2, int y2, Piece*** board) {
 
     //If we want to move from (x1,y1) to (x2,y2) horizontally
 
