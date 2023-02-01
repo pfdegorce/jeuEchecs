@@ -22,4 +22,15 @@ bool Game::in_check(){
         }
     }
     return false;
+}
+
+bool Game::verified_castleling(int x1, int y1, int x2, int y2){
+    //we verify that we change a king with a tower with the same color
+    if ((((typeid(chessboard_.get_board()[x1][y1]) == typeid(King)) && (typeid(chessboard_.get_board()[x2][y2]) == typeid(Tower))) || ((typeid(chessboard_.get_board()[x1][y1]) == typeid(Tower)) && (typeid(chessboard_.get_board()[x2][y2]) == typeid(King)))) && chessboard_.get_board()[x1][y1]->get_color() == chessboard_.get_board()[x2][y2]->get_color()){
+        //we verify if the two pieces didn't move
+//        if()
     }
+    return false;
+}
+
+

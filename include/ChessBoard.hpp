@@ -29,5 +29,6 @@ public:
     bool check_play(int x1, int y1, int x2, int y2);
     void play(int x1, int y1, int x2, int y2);
     bool is_free(int x, int y);
+    bool is_threatened(int x, int y);
 };
 

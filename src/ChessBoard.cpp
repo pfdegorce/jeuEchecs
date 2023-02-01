@@ -222,3 +222,12 @@ bool ChessBoard::is_free(int x, int y){
     }
     return false;
 }
+
+bool ChessBoard::is_threatened(int x, int y){
+    for(int i = 0; i<32; i++){
+        if(!list_piece_[i]->outside_board(list_piece_[i]->get_x(),list_piece_[i]->get_y()) && list_piece_[i]->valid_move(x, y, board_)){
+           return true;
+        } 
+    }
+    return false;
+}
