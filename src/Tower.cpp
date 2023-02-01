@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Tower::Tower(int x, int y, bool b): Piece(x, y, b){}
+Tower::Tower(int x, int y, bool b, bool moved): Piece(x, y, b), already_moved_(moved){}
 
 bool Tower::valid_move(int x, int y, Piece*** board){
 

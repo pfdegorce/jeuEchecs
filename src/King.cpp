@@ -2,7 +2,7 @@
 
 using namespace std;
 
-King::King(int x, int y, bool b): Piece(x, y, b){}
+King::King(int x, int y, bool b, bool moved): Piece(x, y, b), already_moved_(moved){}
 
 bool King::valid_move(int x, int y, Piece*** board){
     if (outside_board(x,y)){

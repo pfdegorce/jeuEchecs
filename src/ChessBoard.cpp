@@ -47,7 +47,7 @@ void ChessBoard::init_board(string board_str) {
             piece = nullptr;
             switch(toupper(piece_char)) {
                 case 'T': 
-                    piece = new Tower(i, j, color); 
+                    piece = new Tower(i, j, color, false); 
                     break;
                 case 'H': 
                     piece = new Knight(i, j, color); 
@@ -59,10 +59,10 @@ void ChessBoard::init_board(string board_str) {
                     piece = new Queen(i, j, color); 
                     break;
                 case 'K': 
-                    piece = new King(i, j, color); 
+                    piece = new King(i, j, color, false); 
                     break;
                 case 'P': 
-                    piece = new Pawn(i, j, color); 
+                    piece = new Pawn(i, j, color, false); 
                     break;
                 default: 
                     break;

@@ -38,7 +38,7 @@ bool Piece::same_place(int x, int y){
     return false;
 }
 
-bool Piece::check_diagonal(int x1, int y1, int x2, int y2, Piece* board[8][8]){
+bool Piece::check_diagonal(int x1, int y1, int x2, int y2, Piece*** board){
     //If we want to move from (x1,y1) to (x2,y2) on the superior right diagonal 
         if((x2 - x1)<0 && (y2 - y1>0)){
             int i=1;
