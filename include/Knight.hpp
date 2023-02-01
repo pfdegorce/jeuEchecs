@@ -7,6 +7,6 @@ class Knight : public Piece{
 public:
     Knight(int x, int y, bool c);
     ~Knight() = default;
+    bool get_moved() const;
     bool valid_move(int x, int y, Piece*** board);
-    bool get_moved();
 };

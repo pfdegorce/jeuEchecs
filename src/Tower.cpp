@@ -4,10 +4,6 @@ using namespace std;
 
 Tower::Tower(int x, int y, bool b, bool moved): Piece(x, y, b), already_moved_(moved){}
 
-bool Tower::get_moved() const{
-    return already_moved_;
-}
-
 bool Tower::valid_move(int x, int y, Piece*** board){
 
     if (outside_board(x,y)){
@@ -32,4 +28,8 @@ bool Tower::valid_move(int x, int y, Piece*** board){
     cout << board[0][0] << endl;
     cout << "invalid move - move not autorized" << endl;
     return false;
+}
+
+bool Tower::get_moved(){
+    return already_moved_;
 }

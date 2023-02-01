@@ -4,6 +4,10 @@ using namespace std;
 
 Bishop::Bishop(int x, int y, bool b): Piece(x, y, b){}
 
+bool Bishop::get_moved(){
+    return true;
+}
+
 bool Bishop::valid_move(int x, int y, Piece*** board){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
@@ -28,8 +32,4 @@ bool Bishop::valid_move(int x, int y, Piece*** board){
     
     cout << "invalid move - move not autorized" << endl;
     return false;
-}
-
-bool Bishop::get_moved(){
-    return true;
 }

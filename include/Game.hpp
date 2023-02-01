@@ -2,6 +2,7 @@
 
 #include "libs.hpp"
 #include "ChessBoard.hpp"
+#include "Player.hpp"
 
 class Game{
 private:
