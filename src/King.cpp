@@ -4,7 +4,7 @@ using namespace std;
 
 King::King(int x, int y, bool b): Piece(x, y, b){}
 
-bool King::valid_move(int x, int y, Piece* board[8][8]){
+bool King::valid_move(int x, int y, Piece*** board){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;

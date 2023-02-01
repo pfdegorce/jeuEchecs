@@ -4,7 +4,7 @@ using namespace std;
 
 Bishop::Bishop(int x, int y, bool b): Piece(x, y, b){}
 
-bool Bishop::valid_move(int x, int y, Piece* board[8][8]){
+bool Bishop::valid_move(int x, int y, Piece*** boad){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
         return false;
