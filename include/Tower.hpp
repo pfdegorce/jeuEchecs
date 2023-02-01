@@ -8,5 +8,6 @@ private:
 public:
     Tower(int x, int y, bool b, bool moved);
     ~Tower() = default;
+    bool get_moved() const;
     bool valid_move(int x, int y, Piece*** board);
 };

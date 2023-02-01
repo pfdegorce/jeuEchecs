@@ -8,5 +8,6 @@ private:
 public:
     King(int x, int y, bool c, bool moved);
     ~King() = default;
+    bool get_moved() const;
     bool valid_move(int x, int y, Piece*** board);
 };

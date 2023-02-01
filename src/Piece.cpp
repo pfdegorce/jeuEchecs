@@ -107,7 +107,7 @@ bool Piece::check_lines(int x1, int y1, int x2, int y2, Piece*** board) {
             }
         }
 
-    //If we want to move from (x1,y1) to (x2,y2) horizontally
+    //If we want to move from (x1,y1) to (x2,y2) vertically
 
     //If we want to move the piece up
         if((x2 - x1)<0 && (y2 - y1)==0 ){

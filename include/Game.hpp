@@ -13,4 +13,5 @@ public:
     ~Game() = default;
     bool get_player() const;
     bool in_check();
+    bool verified_castleling(int x1, int y1, int x2, int y2);
 };

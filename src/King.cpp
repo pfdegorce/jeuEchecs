@@ -4,6 +4,10 @@ using namespace std;
 
 King::King(int x, int y, bool b, bool moved): Piece(x, y, b), already_moved_(moved){}
 
+bool King::get_moved() const{
+    return already_moved_;
+}
+
 bool King::valid_move(int x, int y, Piece*** board){
     if (outside_board(x,y)){
         cout << "Invalid move - outside the chessboard" << endl;
