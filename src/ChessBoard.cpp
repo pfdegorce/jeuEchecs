@@ -248,7 +248,10 @@ bool ChessBoard::is_free(int x, int y){
 
 bool ChessBoard::is_threatened(int x, int y){
     for(int i = 0; i<32; i++){
-        if(!list_piece_[i]->outside_board(list_piece_[i]->get_x(),list_piece_[i]->get_y()) && list_piece_[i]->valid_move(x, y, board_)){
+        int a = (*list_piece_)[i]->get_x();
+        int b = (*list_piece_)[i]->get_y();
+        if(!(*list_piece_)[i]->outside_board(a, b)){
+            if((*list_piece_)[i]->valid_move(x, y, board_))
            return true;
         } 
     }

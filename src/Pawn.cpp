@@ -69,3 +69,6 @@ bool Pawn::valid_move(int x, int y, Piece*** board){
     return false;
 }
 
+bool Pawn::get_moved(){
+    return true;
+}

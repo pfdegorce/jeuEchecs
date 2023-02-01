@@ -10,4 +10,5 @@ public:
     ~Tower() = default;
     bool get_moved() const;
     bool valid_move(int x, int y, Piece*** board);
+    bool get_moved();
 };

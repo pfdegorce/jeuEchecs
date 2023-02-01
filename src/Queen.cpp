@@ -38,3 +38,6 @@ bool Queen::valid_move(int x, int y, Piece*** board){
     return false;
 }
 
+bool Queen::get_moved(){
+    return true;
+}
