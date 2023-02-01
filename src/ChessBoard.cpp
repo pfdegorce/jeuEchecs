@@ -7,7 +7,7 @@ Piece*** ChessBoard::get_board(){
 }
 
 Piece** ChessBoard::get_list_piece(){
-    return list_piece_;
+    return *list_piece_;
 }
 
 ChessBoard::ChessBoard(string board_str) : board_(), list_piece_() {
@@ -15,6 +15,8 @@ ChessBoard::ChessBoard(string board_str) : board_(), list_piece_() {
 }
 
 ChessBoard::ChessBoard() : board_(), list_piece_() {
+    cout << "Debut Contructeur" << endl;
+    fflush(stdout);
     std::string board_str = 
     "THBQKHB\n"
     "PPPPPPP\n"
@@ -25,19 +27,29 @@ ChessBoard::ChessBoard() : board_(), list_piece_() {
     "ppppppp\n"
     "thbqkhb\n";
     init_board(board_str);
+    cout << "Fin Contructeur" << endl;
+    fflush(stdout);
 }
 
 void ChessBoard::init_board(string board_str) {
+    cout << "Debut init_board" << endl;
+    fflush(stdout);
     size_t count_piece = 0;
     char piece_char;
     bool color;
     Piece* piece;
 
+    cout << "Identification probleme 1" << endl;
+    fflush(stdout);
+
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
+        board_[i] = new Piece*[CHESSBOARD_SIZE]; //Segmentation Fault here
         for (size_t j = 0; j < CHESSBOARD_SIZE; j++){
-            board_[i][j] = nullptr;
+            board_[i][j] = nullptr; //Segmentation Fault here
         }
     }
+    cout << "Milieu Contructeur" << endl;
+    fflush(stdout);
 
     //Init each piece
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++) {
@@ -68,11 +80,14 @@ void ChessBoard::init_board(string board_str) {
                     break;
             }
             if (piece) {
-                list_piece_[count_piece] = piece;
-                board_[i][j] = piece;
+                list_piece_[count_piece] = &piece;
+                board_[i][j] = piece; //Segmentation Fault
+                count_piece ++;
             }
         }
     }
+    cout << "Fin Init" << endl;
+    fflush(stdout);
 }
 
 

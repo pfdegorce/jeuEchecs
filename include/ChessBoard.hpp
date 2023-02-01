@@ -13,8 +13,8 @@ using namespace std;
 
 class ChessBoard{
 private:
-    Piece*** board_;
-    Piece* list_piece_[4*CHESSBOARD_SIZE];
+    Piece*** board_ = new Piece**[8];
+    Piece** list_piece_[4*CHESSBOARD_SIZE];
 public:
     ChessBoard(std::string board_str);
     ChessBoard();
