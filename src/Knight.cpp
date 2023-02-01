@@ -27,6 +27,6 @@ bool Knight::valid_move(int x, int y, Piece*** board){
     return false;
 }
 
-bool Knight::get_moved(){
+bool Knight::get_moved() const{
     return true;
 }

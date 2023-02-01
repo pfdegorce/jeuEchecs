@@ -30,6 +30,6 @@ bool Tower::valid_move(int x, int y, Piece*** board){
     return false;
 }
 
-bool Tower::get_moved(){
+bool Tower::get_moved() const{
     return already_moved_;
 }

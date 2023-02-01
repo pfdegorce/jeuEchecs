@@ -4,7 +4,7 @@ using namespace std;
 
 Bishop::Bishop(int x, int y, bool b): Piece(x, y, b){}
 
-bool Bishop::get_moved(){
+bool Bishop::get_moved() const {
     return true;
 }
 
