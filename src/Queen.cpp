@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Queen::Queen(int x, int y, bool b): Piece(x, y, b){}
+Queen::Queen(int x, int y, bool color, bool moved): Piece(x, y, color, moved){}
 
 bool Queen::valid_move(int x, int y, Piece*** board){
     if (outside_board(x,y)){
@@ -36,8 +36,4 @@ bool Queen::valid_move(int x, int y, Piece*** board){
     cout << board[0][0] << endl;
     cout << "invalid move - move not autorized" << endl;
     return false;
-}
-
-bool Queen::get_moved() const{
-    return true;
 }

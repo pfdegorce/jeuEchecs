@@ -75,13 +75,13 @@ void ChessBoard::init_board(string board_str) {
                     piece = new Tower(i, j, color, false); 
                     break;
                 case 'H': 
-                    piece = new Knight(i, j, color); 
+                    piece = new Knight(i, j, color, false); 
                     break;
                 case 'B': 
-                    piece = new Bishop(i, j, color); 
+                    piece = new Bishop(i, j, color, false); 
                     break;
                 case 'Q': 
-                    piece = new Queen(i, j, color); 
+                    piece = new Queen(i, j, color, false); 
                     break;
                 case 'K': 
                     piece = new King(i, j, color, false); 

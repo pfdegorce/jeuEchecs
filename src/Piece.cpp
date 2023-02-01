@@ -1,7 +1,7 @@
 #include "../include/Piece.hpp"
 
 
-Piece::Piece(int x, int y, bool b) : x_(x), y_(y), color_(b){
+Piece::Piece(int x, int y, bool color, bool moved) : x_(x), y_(y), color_(color), already_moved_(moved){
 }
 
 int Piece::get_x() const {
@@ -22,6 +22,14 @@ void Piece::set_y(int y){
 
 bool Piece::get_color() const{
     return color_;
+}
+
+bool Piece::get_moved() const{
+    return already_moved_;
+}
+
+void Piece::set_moved(){
+    already_moved_=true;
 }
 
 bool Piece::outside_board(int x, int y){

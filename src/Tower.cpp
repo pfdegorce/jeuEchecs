@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Tower::Tower(int x, int y, bool b, bool moved): Piece(x, y, b), already_moved_(moved){}
+Tower::Tower(int x, int y, bool color, bool moved): Piece(x, y, color, moved){}
 
 bool Tower::valid_move(int x, int y, Piece*** board){
 
@@ -28,8 +28,4 @@ bool Tower::valid_move(int x, int y, Piece*** board){
     cout << board[0][0] << endl;
     cout << "invalid move - move not autorized" << endl;
     return false;
-}
-
-bool Tower::get_moved() const{
-    return already_moved_;
 }

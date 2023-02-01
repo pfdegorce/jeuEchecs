@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Knight::Knight(int x, int y, bool b): Piece(x, y, b){}
+Knight::Knight(int x, int y, bool color, bool moved): Piece(x, y, color, moved){}
 
 bool Knight::valid_move(int x, int y, Piece*** board){
     if (outside_board(x,y)){
@@ -25,8 +25,4 @@ bool Knight::valid_move(int x, int y, Piece*** board){
     }
     cout << "invalid move - move not autorized" << endl;
     return false;
-}
-
-bool Knight::get_moved() const{
-    return true;
 }

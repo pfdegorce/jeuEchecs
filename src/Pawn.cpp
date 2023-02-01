@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Pawn::Pawn(int x, int y, bool color, bool moved): Piece(x, y, color), already_moved_(moved){}
+Pawn::Pawn(int x, int y, bool color, bool moved): Piece(x, y, color, moved){}
 
 bool Pawn::valid_move(int x, int y, Piece*** board){
     if (outside_board(x,y)){
@@ -17,7 +17,7 @@ bool Pawn::valid_move(int x, int y, Piece*** board){
     //If the pawn is white
     if(!(get_color())){
         //if we want to move the piece two squares
-        if(!(already_moved_) && (x==get_x()-2) && (y==get_y())){
+        if(!(get_moved()) && (x==get_x()-2) && (y==get_y())){
             if((board[get_x()-1][get_y()] != nullptr) || (board[get_x()-2][get_y()] != nullptr)){
                 cout << "invalid move - there is a piece on your way" << endl;
                 return false; 
@@ -43,7 +43,7 @@ bool Pawn::valid_move(int x, int y, Piece*** board){
     //If the pawn is black
     if(get_color()){
         //if we want to move the piece two squares
-        if(!(already_moved_) && (x==get_x()+2) && (y==get_y())){
+        if(!(get_moved()) && (x==get_x()+2) && (y==get_y())){
             if((board[get_x()+1][get_y()] != nullptr) || (board[get_x()+2][get_y()] != nullptr)){
                 cout << "invalid move - there is a piece on your way" << endl;
                 return false; 
@@ -67,8 +67,4 @@ bool Pawn::valid_move(int x, int y, Piece*** board){
     } 
     cout << "invalid move - move not autorized" << endl;
     return false;
-}
-
-bool Pawn::get_moved() const {
-    return true;
 }

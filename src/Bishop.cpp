@@ -2,11 +2,7 @@
 
 using namespace std;
 
-Bishop::Bishop(int x, int y, bool b): Piece(x, y, b){}
-
-bool Bishop::get_moved() const {
-    return true;
-}
+Bishop::Bishop(int x, int y, bool color, bool moved): Piece(x, y, color, moved){}
 
 bool Bishop::valid_move(int x, int y, Piece*** board){
     if (outside_board(x,y)){

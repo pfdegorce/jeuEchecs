@@ -7,8 +7,9 @@ private:
     size_t x_; //pos x
     size_t y_; //pos y
     bool color_; //white = false, black = true
+    bool already_moved_;
 public:
-    Piece(int x, int y, bool c);
+    Piece(int x, int y, bool color, bool moved);
     ~Piece() = default;
 
     int get_x() const;
@@ -16,7 +17,8 @@ public:
     int get_y() const;
     void set_y(int y);
     bool get_color() const;
-    virtual bool get_moved() const = 0;
+    bool get_moved() const;
+    void set_moved();
     virtual bool valid_move(int x, int y, Piece*** board) = 0;
 
     bool outside_board(int x, int y);
