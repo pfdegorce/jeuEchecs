@@ -9,17 +9,16 @@
 
 using namespace std;
 
-#define CHESSBOARD_SIZE 8 //Don't update this const
-
 class ChessBoard{
 private:
     Piece*** board_;
-    Piece** list_piece_[4*CHESSBOARD_SIZE];
+    Piece** list_piece_[32];
+
 public:
-    ChessBoard(std::string board_str);
     ChessBoard();
+    ChessBoard(std::string board_str);
     ~ChessBoard() = default;
-    ChessBoard& operator=(const ChessBoard& cb);
+    //ChessBoard& operator=(const ChessBoard& cb);
 
     void init_board(std::string board_str);
     const char* piece_to_char(int x, int y);
@@ -27,8 +26,9 @@ public:
     Piece** get_list_piece();
     void print();
     bool check_play(int x1, int y1, int x2, int y2);
-    void play(int x1, int y1, int x2, int y2);
+    bool play(int x1, int y1, int x2, int y2); //Return true is the piece has moved
     bool is_free(int x, int y);
     bool is_threatened(int x, int y);
+    Piece* found_piece(int x, int y); //Return nullptr if it doesn't found Piece
 };
 

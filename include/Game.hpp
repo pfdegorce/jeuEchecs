@@ -8,6 +8,7 @@ private:
     ChessBoard chessboard_;
     bool player_; //white = false, black = true
     std::vector<std::array<int,4>> list_moves_;
+
 public:
     Game(ChessBoard chessboard, bool player, std::vector<std::array<int,4>> list_moves);
     ~Game() = default;

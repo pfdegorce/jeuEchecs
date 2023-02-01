@@ -2,12 +2,21 @@
 
 using namespace std;
 
-Piece*** ChessBoard::get_board(){
-    return board_;
-}
-
-Piece** ChessBoard::get_list_piece(){
-    return *list_piece_;
+ChessBoard::ChessBoard() : board_(), list_piece_() {
+    board_ = new Piece**[8];
+    for (size_t i = 0; i < 8; i++){
+        board_[i] = new Piece*[8];
+    }
+    std::string board_str = 
+    "THBQKBHT\n"
+    "PPPPPPPP\n"
+    "........\n"
+    "........\n"
+    "........\n"
+    "........\n"
+    "pppppppp\n"
+    "thbqkbht\n";
+    init_board(board_str);
 }
 
 ChessBoard::ChessBoard(string board_str) : board_(), list_piece_() {
@@ -19,27 +28,25 @@ ChessBoard::ChessBoard(string board_str) : board_(), list_piece_() {
     init_board(board_str);
 }
 
-ChessBoard::ChessBoard() : board_(), list_piece_() {
-    board_ = new Piece**[8];
-    for (size_t i = 0; i < 8; i++){
-        board_[i] = new Piece*[8];
+/*ChessBoard& ChessBoard::operator=(const ChessBoard& cb){
+    for(int i = 0; i < CHESSBOARD_SIZE; i++) {
+        for(int j = 0; j < CHESSBOARD_SIZE; j++) {
+            delete board_[i][j];
+        }
     }
-    
-    cout << "Debut Contructeur" << endl;
-    fflush(stdout);
-    std::string board_str = 
-    "THBQKBHT\n"
-    "PPPPPPPP\n"
-    "........\n"
-    "........\n"
-    "........\n"
-    "........\n"
-    "pppppppp\n"
-    "thbqkbht\n";
-    init_board(board_str);
-    cout << "Fin Contructeur" << endl;
-    fflush(stdout);
-}
+    for(int i = 0; i < 4*CHESSBOARD_SIZE; i++) {
+        delete list_piece_[i];
+    }
+    for(int i = 0; i < CHESSBOARD_SIZE; i++) {
+        for(int j = 0; j < CHESSBOARD_SIZE; j++) {
+            board_[i][j] = cb.board_[i][j]->clone();
+        }
+    }
+    for(int i = 0; i < 4*CHESSBOARD_SIZE; i++) {
+        list_piece_[i] = cb.list_piece_[i]->clone();
+    }
+    return *this;
+}*/
 
 void ChessBoard::init_board(string board_str) {
     size_t count_piece = 0;
@@ -48,21 +55,19 @@ void ChessBoard::init_board(string board_str) {
     bool color;
     Piece* piece;
 
-    for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
-        for (size_t j = 0; j < CHESSBOARD_SIZE; j++){
+    for (size_t i = 0; i < 8; i++){
+        for (size_t j = 0; j < 8; j++){
             board_[i][j] = nullptr; //Segmentation Fault here
         }
     }
-    cout << "Milieu Contructeur" << endl;
-    fflush(stdout);
 
     //Init each piece
-    for (size_t i = 0; i < CHESSBOARD_SIZE; i++) {
-        for (size_t j = 0; j < CHESSBOARD_SIZE; j++) {
-            if(board_str[i * CHESSBOARD_SIZE + j + new_line] == '\n'){
+    for (size_t i = 0; i < 8; i++) {
+        for (size_t j = 0; j < 8; j++) {
+            if(board_str[i * 8 + j + new_line] == '\n'){
                 new_line++;
             }
-            piece_char = board_str[i * CHESSBOARD_SIZE + j + new_line];
+            piece_char = board_str[i * 8 + j + new_line];
             color = isupper(piece_char);
             piece = nullptr;
             switch(toupper(piece_char)) {
@@ -94,10 +99,117 @@ void ChessBoard::init_board(string board_str) {
             }
         }
     }
-    cout << "Fin Init" << endl;
-    fflush(stdout);
 }
 
+const char* ChessBoard::piece_to_char(int x, int y){
+    if (dynamic_cast<Tower*>(board_[x][y])) {
+        if(board_[x][y]->get_color()){
+            return "T";
+        } else {
+            return "t";
+        }
+    } else if (dynamic_cast<Bishop*>(board_[x][y])) {
+        if(board_[x][y]->get_color()){
+            return"B";
+        } else {
+            return"b";
+        }
+    } else if (dynamic_cast<Knight*>(board_[x][y])) {
+        if(board_[x][y]->get_color()){
+            return"H";
+        } else {
+            return"h";
+        }
+    } else if (dynamic_cast<Queen*>(board_[x][y])) {
+        if(board_[x][y]->get_color()){
+            return"Q";
+        } else {
+            return"q";
+        }
+    } else if (dynamic_cast<King*>(board_[x][y])) {
+        if(board_[x][y]->get_color()){
+            return"K";
+        } else {
+            return"k";
+        }
+    } else if (dynamic_cast<Pawn*>(board_[x][y])) {
+        if(board_[x][y]->get_color()){
+            return"P";
+        } else {
+            return"p";
+        }
+    } else {
+        return".";
+    }
+}
+
+Piece*** ChessBoard::get_board(){
+    return board_;
+}
+
+Piece** ChessBoard::get_list_piece(){
+    return *list_piece_;
+}
+    
+void ChessBoard::print() {
+    for (size_t i = 0; i < 8; i++) {
+        for (size_t j = 0; j < 8; j++) {
+            cout << " " << piece_to_char(i, j) << " ";
+        }
+    cout << endl;
+    }
+}
+
+bool ChessBoard::check_play(int x1, int y1, int x2, int y2){
+    (void)x1;
+    (void)x2;
+    (void)y1;
+    (void)y2;
+    return true;
+}
+
+bool ChessBoard::play(int x1, int y1, int x2, int y2){
+    if(!check_play(x1, y1, x2, y2)){
+        cout << "Error, move is forbiden";
+        return false;
+    }
+    return true;
+}
+
+bool ChessBoard::is_free(int x, int y){
+    if(board_[x][y] == nullptr){
+        return true;
+    }
+    return false;
+}
+
+bool ChessBoard::is_threatened(int x, int y){
+    for(int i = 0; i<32; i++){
+        int a = (*list_piece_)[i]->get_x();
+        int b = (*list_piece_)[i]->get_y();
+        if(!(*list_piece_)[i]->outside_board(a, b)){
+            if((*list_piece_)[i]->valid_move(x, y, board_))
+           return true;
+        } 
+    }
+    return false;
+}
+
+Piece* ChessBoard::found_piece(int x, int y){
+    Piece* piece = nullptr;
+    (void) x;
+    (void) y;
+    /*bool found = false;
+    int i = 0;
+    while(!found && i < 32){
+        if((*list_piece_)[i]->get_x() == x){
+            if((*list_piece_)[i]->get_y() == y){
+                piece = (*list_piece_)[i];
+            }
+        }
+    }*/
+    return piece;
+}
 
 /*ChessBoard::ChessBoard() : board_(), list_piece_() {
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
@@ -167,93 +279,3 @@ void ChessBoard::init_board(string board_str) {
         board_[6][i] = list_piece_[24+i];
     }
 }*/
-
-/*ChessBoard& ChessBoard::operator=(const ChessBoard& cb){
-    for(int i = 0; i < CHESSBOARD_SIZE; i++) {
-        for(int j = 0; j < CHESSBOARD_SIZE; j++) {
-            delete board_[i][j];
-        }
-    }
-    for(int i = 0; i < 4*CHESSBOARD_SIZE; i++) {
-        delete list_piece_[i];
-    }
-    for(int i = 0; i < CHESSBOARD_SIZE; i++) {
-        for(int j = 0; j < CHESSBOARD_SIZE; j++) {
-            board_[i][j] = cb.board_[i][j]->clone();
-        }
-    }
-    for(int i = 0; i < 4*CHESSBOARD_SIZE; i++) {
-        list_piece_[i] = cb.list_piece_[i]->clone();
-    }
-    return *this;
-}*/
-
-void ChessBoard::print() {
-    for (size_t i = 0; i < CHESSBOARD_SIZE; i++) {
-        for (size_t j = 0; j < CHESSBOARD_SIZE; j++) {
-            cout << " " << piece_to_char(i, j) << " ";
-        }
-    cout << endl;
-    }
-}
-
-const char* ChessBoard::piece_to_char(int x, int y){
-    if (dynamic_cast<Tower*>(board_[x][y])) {
-        if(board_[x][y]->get_color()){
-            return "T";
-        } else {
-            return "t";
-        }
-    } else if (dynamic_cast<Bishop*>(board_[x][y])) {
-        if(board_[x][y]->get_color()){
-            return"B";
-        } else {
-            return"b";
-        }
-    } else if (dynamic_cast<Knight*>(board_[x][y])) {
-        if(board_[x][y]->get_color()){
-            return"H";
-        } else {
-            return"h";
-        }
-    } else if (dynamic_cast<Queen*>(board_[x][y])) {
-        if(board_[x][y]->get_color()){
-            return"Q";
-        } else {
-            return"q";
-        }
-    } else if (dynamic_cast<King*>(board_[x][y])) {
-        if(board_[x][y]->get_color()){
-            return"K";
-        } else {
-            return"k";
-        }
-    } else if (dynamic_cast<Pawn*>(board_[x][y])) {
-        if(board_[x][y]->get_color()){
-            return"P";
-        } else {
-            return"p";
-        }
-    } else {
-        return".";
-    }
-}
-
-bool ChessBoard::is_free(int x, int y){
-    if(board_[x][y] == nullptr){
-        return true;
-    }
-    return false;
-}
-
-bool ChessBoard::is_threatened(int x, int y){
-    for(int i = 0; i<32; i++){
-        int a = (*list_piece_)[i]->get_x();
-        int b = (*list_piece_)[i]->get_y();
-        if(!(*list_piece_)[i]->outside_board(a, b)){
-            if((*list_piece_)[i]->valid_move(x, y, board_))
-           return true;
-        } 
-    }
-    return false;
-}
