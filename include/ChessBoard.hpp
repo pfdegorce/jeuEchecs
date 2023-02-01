@@ -14,7 +14,7 @@ using namespace std;
 class ChessBoard{
 private:
     Piece*** board_;
-    Piece* list_piece_[4*CHESSBOARD_SIZE];
+    Piece** list_piece_[4*CHESSBOARD_SIZE];
 public:
     ChessBoard(std::string board_str);
     ChessBoard();
