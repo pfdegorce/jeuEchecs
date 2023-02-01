@@ -11,14 +11,14 @@
 
 class ChessBoard{
 private:
-    Piece* board_[CHESSBOARD_SIZE][CHESSBOARD_SIZE];
+    Piece*** board_;
     Piece* list_piece_[4*CHESSBOARD_SIZE];
 public:
     ChessBoard();
     ~ChessBoard() = default;
     ChessBoard& operator=(const ChessBoard& cb);
 
-    Piece** get_board();
+    Piece*** get_board();
     Piece** get_list_piece();
 
     void print();

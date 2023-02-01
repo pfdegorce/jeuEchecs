@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Piece** ChessBoard::get_board(){
+Piece*** ChessBoard::get_board(){
     return board_;
 }
 
