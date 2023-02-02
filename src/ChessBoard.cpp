@@ -152,12 +152,18 @@ Piece** ChessBoard::get_list_piece(){
 }
     
 void ChessBoard::print() {
+    cout << "  A  B  C  D  E  F  G  H  " << endl;
+    cout << "  ________________________  " << endl;
     for (size_t i = 0; i < 8; i++) {
+        cout << 8 - i << "|";
         for (size_t j = 0; j < 8; j++) {
             cout << " " << piece_to_char(i, j) << " ";
         }
+        cout << "|" << 8 - i;
     cout << endl;
     }
+    cout << "  ________________________  " << endl;
+    cout << "  A  B  C  D  E  F  G  H" << endl;
 }
 
 bool ChessBoard::play(int x1, int y1, int x2, int y2){
