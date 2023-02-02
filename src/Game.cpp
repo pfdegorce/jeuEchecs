@@ -8,6 +8,14 @@ bool Game::get_player() const{
     return player_;
 }
 
+vector<array<int,4>> Game::get_moves() const{
+    return list_moves_;
+}
+
+void Game::add_move(array<int,4> move){
+    list_moves_.push_back(move);
+}
+
 bool Game::in_check(){
     int king_x, king_y;
     for(int i = 0; i<32 ;i++){
@@ -24,7 +32,7 @@ bool Game::in_check(){
     return false;
 }
 
-bool Game::verified_castleling(int x1, int y1, int x2, int y2){
+/*bool Game::verified_castleling(int x1, int y1, int x2, int y2){
     //we verify that we change a king with a tower with the same color
     if ((((typeid(chessboard_.get_board()[x1][y1]) == typeid(King)) && (typeid(chessboard_.get_board()[x2][y2]) == typeid(Tower))) || ((typeid(chessboard_.get_board()[x1][y1]) == typeid(Tower)) && (typeid(chessboard_.get_board()[x2][y2]) == typeid(King)))) && chessboard_.get_board()[x1][y1]->get_color() == chessboard_.get_board()[x2][y2]->get_color()){
         //we verify if the two pieces didn't move
@@ -52,5 +60,5 @@ bool Game::verified_castleling(int x1, int y1, int x2, int y2){
     }
     return false;
 }
-
+*/
 

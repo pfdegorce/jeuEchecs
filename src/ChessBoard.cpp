@@ -204,6 +204,35 @@ Piece* ChessBoard::found_piece(int x, int y){
     return board_[x][y];
 }
 
+bool ChessBoard::verified_castleling(int x1, int y1, int x2, int y2){
+    //we verify that we change a king with a tower with the same color
+    if ((((typeid(board_[x1][y1]) == typeid(King)) && (typeid(board_[x2][y2]) == typeid(Tower))) || ((typeid(board_[x1][y1]) == typeid(Tower)) && (typeid(board_[x2][y2]) == typeid(King)))) && board_[x1][y1]->get_color() == board_[x2][y2]->get_color()){
+        //we verify if the two pieces didn't move
+        if(!board_[x1][y1]->get_moved() && !board_[x2][y2]->get_moved()){
+            //we verify if there are no pieces beetween the tower and the king
+            if((x2 - x1)==0 && (y2 - y1>0)){
+                int i=1;
+                while(i<abs(y2 - y1)){
+                    if(board_[x1][y1+i] != nullptr){
+                    return true;
+                    }
+                i++;
+                }
+            }
+            if((x2 - x1)==0 && (y2 - y1)<0){
+                int i=1;
+                while(i<abs(y2 - y1)){
+                    if(board_[x1][y1-i] != nullptr){
+                        return true;
+                    }
+                    i++;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 /*ChessBoard::ChessBoard() : board_(), list_piece_() {
     for (size_t i = 0; i < CHESSBOARD_SIZE; i++){
         for (size_t j = 0; j < CHESSBOARD_SIZE; j++){
