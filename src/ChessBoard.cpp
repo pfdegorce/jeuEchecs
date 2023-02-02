@@ -208,6 +208,7 @@ Piece* ChessBoard::found_piece(int x, int y){
             }
         }
     }*/
+    piece = board_[x][y];
     return piece;
 }
 

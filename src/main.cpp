@@ -3,11 +3,8 @@
 using namespace std;
 
 int main() {
-    cout << "Hello World" << endl;
-    fflush(stdout);
     ChessBoard game;
-    cout << "Game init" << endl;
-    fflush(stdout);
     game.print();
+    cout << game.found_piece(0, 0) << endl;
     return 0;
 }
