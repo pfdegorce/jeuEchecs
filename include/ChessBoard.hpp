@@ -26,7 +26,6 @@ public:
     Piece*** get_board();
     Piece** get_list_piece();
     void print();
-    bool check_play(int x1, int y1, int x2, int y2);
     bool play(int x1, int y1, int x2, int y2); //Return true is the piece has moved
     bool is_free(int x, int y);
     bool is_threatened(int x, int y);

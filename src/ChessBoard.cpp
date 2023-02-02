@@ -160,19 +160,18 @@ void ChessBoard::print() {
     }
 }
 
-bool ChessBoard::check_play(int x1, int y1, int x2, int y2){
-    (void)x1;
-    (void)x2;
-    (void)y1;
-    (void)y2;
-    return true;
-}
-
 bool ChessBoard::play(int x1, int y1, int x2, int y2){
-    if(!check_play(x1, y1, x2, y2)){
-        cout << "Error, move is forbiden";
+    Piece* piece = found_piece(x1, y1);
+    if(piece == nullptr){
         return false;
     }
+    if(!is_free(x2, y2)){
+        return false;
+    }
+    piece->set_x(x2);
+    piece->set_y(y2);
+    board_[x1][y1] = nullptr;
+    board_[x2][y2] = piece;
     return true;
 }
 
@@ -196,20 +195,7 @@ bool ChessBoard::is_threatened(int x, int y){
 }
 
 Piece* ChessBoard::found_piece(int x, int y){
-    Piece* piece = nullptr;
-    (void) x;
-    (void) y;
-    /*bool found = false;
-    int i = 0;
-    while(!found && i < 32){
-        if((*list_piece_)[i]->get_x() == x){
-            if((*list_piece_)[i]->get_y() == y){
-                piece = (*list_piece_)[i];
-            }
-        }
-    }*/
-    piece = board_[x][y];
-    return piece;
+    return board_[x][y];
 }
 
 /*ChessBoard::ChessBoard() : board_(), list_piece_() {
