@@ -21,47 +21,36 @@ Game::Game(){
     Player player2(player2_name, true);
     
     //Loop Game
+    Player* p_turn;
+    size_t nb_turn = 1;
+    array<int, 4> move;
     while(ongoing_game){
-        //White player move
-        array<int,4> move1=player1.give_move();
-        while(game.get_board()[move1[0]][move1[1]]->get_color()!=player1.get_color()){
-            cout<<"Invalid move - you can't move an opponent's piece "<<endl;
-            move1=player1.give_move();
-        }
-        if(game.verified_castling(move1[0], move1[1], move1[2], move1[3])){
-            list_moves.push_back(move1);
-            game.get_board()[move1[0]][move1[1]]->set_moved();
-            game.get_board()[move1[2]][move1[3]]->set_moved();
-            game.play_castling(move1[0], move1[1], move1[2], move1[3]);
-        }
-        while(!(game.get_board()[move1[0]][move1[1]]->valid_move(move1[2], move1[3], game.get_board()))){
-            move1=player1.give_move();
-        }
-        list_moves.push_back(move1);
-        game.get_board()[move1[0]][move1[1]]->set_moved();
-        game.play(move1[0], move1[1], move1[2], move1[3]);
-        game.print();
-
-        //Black player move
-        array<int,4> move2=player2.give_move();
-        while(game.get_board()[move2[0]][move2[1]]->get_color()!=player2.get_color()){
-            cout<<"Invalid move - you can't move an opponent's piece "<<endl;
-            move2=player2.give_move();
-        }
-        if(game.verified_castling(move2[0], move2[1], move2[2], move2[3])){
-            list_moves.push_back(move2);
-            game.get_board()[move2[0]][move2[1]]->set_moved();
-            game.get_board()[move2[2]][move2[3]]->set_moved();
-            game.play_castling(move2[0], move2[1], move2[2], move2[3]);
+        //Choose player
+        if(nb_turn%2 == 0){
+            p_turn = &player2;
         } else {
-            while(!(game.get_board()[move2[0]][move2[1]]->valid_move(move2[2], move2[3], game.get_board()))){
-                move2=player2.give_move();
-            }
-            list_moves.push_back(move2);
-            game.get_board()[move2[0]][move2[1]]->set_moved();
-            game.play(move2[0], move2[1], move2[2], move2[3]);
+            p_turn = &player1;
         }
 
+        move = p_turn->give_move();
+        while(game.get_board()[move[0]][move[1]]->get_color()!=p_turn->get_color()){
+            cout<<"Invalid move - you can't move an opponent's piece "<<endl;
+            move=p_turn->give_move();
+        }
+
+        if(game.verified_castling(move[0], move[1], move[2], move[3])){
+            list_moves.push_back(move);
+            game.get_board()[move[0]][move[1]]->set_moved();
+            game.get_board()[move[2]][move[3]]->set_moved();
+            game.play_castling(move[0], move[1], move[2], move[3]);
+        } else {
+            while(!(game.get_board()[move[0]][move[1]]->valid_move(move[2], move[3], game.get_board()))){
+                move=p_turn->give_move();
+            }
+            list_moves.push_back(move);
+            game.get_board()[move[0]][move[1]]->set_moved();
+            game.play(move[0], move[1], move[2], move[3]);
+        }
         game.print();
     }
 
