@@ -204,6 +204,22 @@ Piece* ChessBoard::found_piece(int x, int y){
     return board_[x][y];
 }
 
+bool ChessBoard::in_check(bool color){
+    int king_x, king_y;
+    for(int i = 0; i<32 ;i++){
+        if ((typeid(*list_piece_[i]) == typeid(King)) && ((*list_piece_[i])->get_color()==color)){
+            king_x = (*list_piece_[i])->get_x();
+            king_y = (*list_piece_[i])->get_y();
+        }
+    }
+    for(int i = 0; i<32 ;i++){
+        if (((*list_piece_[i])->valid_move(king_x, king_y, board_)) && ((*list_piece_[i])->get_color()!=color)){
+            return true;
+        }
+    }
+    return false;
+}
+
 bool ChessBoard::verified_castling(int x1, int y1, int x2, int y2){
     //we verify that we change a king with a tower with the same color
     if ((((typeid(board_[x1][y1]) == typeid(King)) && (typeid(board_[x2][y2]) == typeid(Tower))) || ((typeid(board_[x1][y1]) == typeid(Tower)) && (typeid(board_[x2][y2]) == typeid(King)))) && board_[x1][y1]->get_color() == board_[x2][y2]->get_color()){

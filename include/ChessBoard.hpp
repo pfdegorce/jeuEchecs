@@ -32,5 +32,6 @@ public:
     Piece* found_piece(int x, int y); //Return nullptr if it doesn't found Piece
     bool verified_castling(int x1, int y1, int x2, int y2);
     void play_castling(int x1, int y1, int x2, int y2);
+    bool in_check(bool color);
 };
 
