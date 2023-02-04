@@ -12,6 +12,7 @@ private:
 
 public:
     Game(ChessBoard chessboard, bool player, std::vector<std::array<int,4>> list_moves);
+    Game();
     ~Game() = default;
     bool get_player() const;
     std::vector<std::array<int,4>> get_moves() const;
