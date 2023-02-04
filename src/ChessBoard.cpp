@@ -204,7 +204,7 @@ Piece* ChessBoard::found_piece(int x, int y){
     return board_[x][y];
 }
 
-bool ChessBoard::verified_castleling(int x1, int y1, int x2, int y2){
+bool ChessBoard::verified_castling(int x1, int y1, int x2, int y2){
     //we verify that we change a king with a tower with the same color
     if ((((typeid(board_[x1][y1]) == typeid(King)) && (typeid(board_[x2][y2]) == typeid(Tower))) || ((typeid(board_[x1][y1]) == typeid(Tower)) && (typeid(board_[x2][y2]) == typeid(King)))) && board_[x1][y1]->get_color() == board_[x2][y2]->get_color()){
         //we verify if the two pieces didn't move
@@ -231,6 +231,55 @@ bool ChessBoard::verified_castleling(int x1, int y1, int x2, int y2){
         }
     }
     return false;
+}
+
+
+void ChessBoard::play_castling(int x1, int y1, int x2, int y2){
+    Piece* piece1 = found_piece(x1, y1);
+    Piece* piece2 = found_piece(x2, y2);
+    //if the player give the king coordinates first
+    if (typeid(board_[x1][y1]) == typeid(King)){
+        //if the player want to do the small castling
+        if(y2>y1){
+            piece1->set_y(y1+2);
+            board_[x1][y1] = nullptr;
+            board_[x1][y1+2] = piece1;
+            piece2->set_y(y2-2);
+            board_[x2][y2] = nullptr;
+            board_[x2][y2-2] = piece2;
+        }
+        //if the player want to do the big castling
+        if(y2<y1){
+            piece1->set_y(y1-2);
+            board_[x1][y1] = nullptr;
+            board_[x1][y1-2] = piece1;
+            piece2->set_y(y2+3);
+            board_[x1][y1] = nullptr;
+            board_[x2][y2+3] = piece2;
+        }
+    }
+    //if the player give the tower coordinates first
+    if (typeid(board_[x1][y1]) == typeid(Tower)){
+        //if the player want to do the small castling
+        if(y2<y1){
+            piece1->set_y(y1-2);
+            board_[x1][y1] = nullptr;
+            board_[x1][y1-2] = piece1;
+            piece2->set_y(y2+2);
+            board_[x2][y2] = nullptr;
+            board_[x2][y2+2] = piece2;
+        }
+        //if the player want to do the big castling
+        if(y2>y1){
+            piece1->set_y(y1+3);
+            board_[x1][y1] = nullptr;
+            board_[x1][y1+3] = piece1;
+            piece2->set_y(y2-2);
+            board_[x1][y1] = nullptr;
+            board_[x2][y2-2] = piece2;
+        }
+    }
+
 }
 
 /*ChessBoard::ChessBoard() : board_(), list_piece_() {

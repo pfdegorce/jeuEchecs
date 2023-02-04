@@ -30,6 +30,7 @@ public:
     bool is_free(int x, int y);
     bool is_threatened(int x, int y);
     Piece* found_piece(int x, int y); //Return nullptr if it doesn't found Piece
-    bool verified_castleling(int x1, int y1, int x2, int y2);
+    bool verified_castling(int x1, int y1, int x2, int y2);
+    void play_castling(int x1, int y1, int x2, int y2);
 };
 
