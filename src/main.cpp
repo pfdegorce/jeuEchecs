@@ -49,13 +49,15 @@ int main() {
             game.get_board()[move2[0]][move2[1]]->set_moved();
             game.get_board()[move2[2]][move2[3]]->set_moved();
             game.play_castling(move2[0], move2[1], move2[2], move2[3]);
+        } else {
+            while(!(game.get_board()[move2[0]][move2[1]]->valid_move(move2[2], move2[3], game.get_board()))){
+                move2=player2.give_move();
+            }
+            list_moves.push_back(move2);
+            game.get_board()[move2[0]][move2[1]]->set_moved();
+            game.play(move2[0], move2[1], move2[2], move2[3]);
         }
-        while(!(game.get_board()[move2[0]][move2[1]]->valid_move(move2[2], move2[3], game.get_board()))){
-            move2=player2.give_move();
-        }
-        list_moves.push_back(move2);
-        game.get_board()[move2[0]][move2[1]]->set_moved();
-        game.play(move2[0], move2[1], move2[2], move2[3]);
+
         game.print();
     }
     return 0;
