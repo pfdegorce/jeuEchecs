@@ -6,8 +6,8 @@ Game::Game(ChessBoard chessboard, bool player, vector<array<int,4>> list_moves):
 
 Game::Game(){
     //Init Board
-    ChessBoard game;
-    game.print();
+    ChessBoard board;
+    board.print();
     bool ongoing_game=true;
     vector<array<int,4>> list_moves = {};
 
@@ -22,9 +22,10 @@ Game::Game(){
     
     //Loop Game
     Player* p_turn;
-    size_t nb_turn = 1;
+    size_t nb_turn = 0;
     array<int, 4> move;
     while(ongoing_game){
+        nb_turn ++;
         //Choose player
         if(nb_turn%2 == 0){
             p_turn = &player2;
@@ -33,25 +34,35 @@ Game::Game(){
         }
 
         move = p_turn->give_move();
-        while(game.get_board()[move[0]][move[1]]->get_color()!=p_turn->get_color()){
+        while(move[0] == 8 || move[1] == 8 || move[2] == 8 || move[3] == 8){
+            cout<<"Invalid coordinates - please enter validate coordinate (ex: A1)" << endl;
+            move=p_turn->give_move();
+        }
+        
+        while(board.found_piece(move[0], move[1]) == nullptr){
+            cout<<"Invalid coordinates - no piece found on the coordinate" << endl;
+            move=p_turn->give_move();
+        }
+        
+        while(board.get_board()[move[0]][move[1]]->get_color()!=p_turn->get_color()){
             cout<<"Invalid move - you can't move an opponent's piece "<<endl;
             move=p_turn->give_move();
         }
 
-        if(game.verified_castling(move[0], move[1], move[2], move[3])){
+        if(board.verified_castling(move[0], move[1], move[2], move[3])){
             list_moves.push_back(move);
-            game.get_board()[move[0]][move[1]]->set_moved();
-            game.get_board()[move[2]][move[3]]->set_moved();
-            game.play_castling(move[0], move[1], move[2], move[3]);
+            board.get_board()[move[0]][move[1]]->set_moved();
+            board.get_board()[move[2]][move[3]]->set_moved();
+            board.play_castling(move[0], move[1], move[2], move[3]);
         } else {
-            while(!(game.get_board()[move[0]][move[1]]->valid_move(move[2], move[3], game.get_board()))){
+            while(!(board.get_board()[move[0]][move[1]]->valid_move(move[2], move[3], board.get_board()))){
                 move=p_turn->give_move();
             }
             list_moves.push_back(move);
-            game.get_board()[move[0]][move[1]]->set_moved();
-            game.play(move[0], move[1], move[2], move[3]);
+            board.get_board()[move[0]][move[1]]->set_moved();
+            board.play(move[0], move[1], move[2], move[3]);
         }
-        game.print();
+        board.print();
     }
 
 }
