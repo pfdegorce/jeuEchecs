@@ -22,21 +22,13 @@ array<int,4> Player::give_move(){
     cout<<"y2 : ";
     cin >> move[3];
 
-    cout << "Poil" << endl;
-    fflush(stdout);
-
     transform(move[0], move[1]);
     transform(move[2], move[3]);
 
-    cout << "Hello" << endl;
-    fflush(stdout);
     for (size_t i = 0; i < 4; i++){
         move_to_return[i] = move[i] - '0';
         cout << move_to_return[i] << endl;
     }
-
-    cout << "Ended" << endl;
-    fflush(stdout);
 
     return move_to_return;
 }
