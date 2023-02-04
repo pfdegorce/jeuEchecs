@@ -24,11 +24,11 @@ int main() {
             cout<<"Invalid move - you can't move an opponent's piece "<<endl;
             move1=player1.give_move();
         }
-        if(game.verified_castleling(move1[0], move1[1], move1[2], move1[3])){
+        if(game.verified_castling(move1[0], move1[1], move1[2], move1[3])){
             list_moves.push_back(move1);
             game.get_board()[move1[0]][move1[1]]->set_moved();
             game.get_board()[move1[2]][move1[3]]->set_moved();
-            game.play(move1[0], move1[1], move1[2], move1[3]);
+            game.play_castling(move1[0], move1[1], move1[2], move1[3]);
         }
         while(!(game.get_board()[move1[0]][move1[1]]->valid_move(move1[2], move1[3], game.get_board()))){
             move1=player1.give_move();
@@ -44,11 +44,11 @@ int main() {
             cout<<"Invalid move - you can't move an opponent's piece "<<endl;
             move2=player2.give_move();
         }
-        if(game.verified_castleling(move2[0], move2[1], move2[2], move2[3])){
+        if(game.verified_castling(move2[0], move2[1], move2[2], move2[3])){
             list_moves.push_back(move2);
             game.get_board()[move2[0]][move2[1]]->set_moved();
             game.get_board()[move2[2]][move2[3]]->set_moved();
-            game.play(move2[0], move2[1], move2[2], move2[3]);
+            game.play_castling(move2[0], move2[1], move2[2], move2[3]);
         }
         while(!(game.get_board()[move2[0]][move2[1]]->valid_move(move2[2], move2[3], game.get_board()))){
             move2=player2.give_move();
