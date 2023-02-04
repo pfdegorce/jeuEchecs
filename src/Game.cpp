@@ -32,6 +32,14 @@ Game::Game(){
         } else {
             p_turn = &player1;
         }
+        cout << "Loop" << endl;
+
+        if(board.in_check(nb_turn%2)){
+            cout << "King is in check" << endl;
+        } else {
+            //DO SOMETHING
+        }
+        cout << "End" <<endl;
 
         move = p_turn->give_move();
         while(move[0] == 8 || move[1] == 8 || move[2] == 8 || move[3] == 8){
