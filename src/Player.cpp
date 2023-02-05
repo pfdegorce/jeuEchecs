@@ -12,11 +12,11 @@ array<int,4> Player::give_move(){
     array<char,4> move;
     array<int, 4> move_to_return;
     cout<<"Player "<< name_ <<" "<<"give the coordinates of the piece you want to move :" << endl;
-    cout<<"Start position (ex: A7) : ";
+    cout<<"Start position : ";
     cin >> move[0];
     cin >> move[1];
     cout<<"Player "<< name_ <<" "<<"give the coordinates you want to reach :" << endl;
-    cout<<"End position (ex: A5) : ";
+    cout<<"End position : ";
     cin >> move[2];
     cin >> move[3];
 

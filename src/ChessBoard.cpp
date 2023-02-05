@@ -152,7 +152,7 @@ Piece** ChessBoard::get_list_piece(){
 }
     
 void ChessBoard::print() {
-    cout << "  A  B  C  D  E  F  G  H  " << endl;
+    cout << "   A  B  C  D  E  F  G  H  " << endl;
     cout << "  ________________________  " << endl;
     for (size_t i = 0; i < 8; i++) {
         cout << 8 - i << "|";
@@ -163,7 +163,7 @@ void ChessBoard::print() {
     cout << endl;
     }
     cout << "  ________________________  " << endl;
-    cout << "  A  B  C  D  E  F  G  H" << endl;
+    cout << "   A  B  C  D  E  F  G  H  " << endl;
 }
 
 bool ChessBoard::play(int x1, int y1, int x2, int y2){
@@ -172,7 +172,9 @@ bool ChessBoard::play(int x1, int y1, int x2, int y2){
         return false;
     }
     if(!is_free(x2, y2)){
-        return false;
+        Piece* piece2 = found_piece(x2, y2);
+        piece2->set_x(-1);
+        piece2->set_y(-1);
     }
     piece->set_x(x2);
     piece->set_y(y2);
@@ -222,7 +224,9 @@ bool ChessBoard::in_check(bool color){
 
 bool ChessBoard::verified_castling(int x1, int y1, int x2, int y2){
     //we verify that we change a king with a tower with the same color
-    if ((((typeid(board_[x1][y1]) == typeid(King)) && (typeid(board_[x2][y2]) == typeid(Tower))) || ((typeid(board_[x1][y1]) == typeid(Tower)) && (typeid(board_[x2][y2]) == typeid(King)))) && board_[x1][y1]->get_color() == board_[x2][y2]->get_color()){
+    if ((((typeid(board_[x1][y1]) == typeid(King)) && (typeid(board_[x2][y2]) == typeid(Tower))) 
+    || ((typeid(board_[x1][y1]) == typeid(Tower)) && (typeid(board_[x2][y2]) == typeid(King)))) 
+    && board_[x1][y1]->get_color() == board_[x2][y2]->get_color()){
         //we verify if the two pieces didn't move
         if(!board_[x1][y1]->get_moved() && !board_[x2][y2]->get_moved()){
             //we verify if there are no pieces beetween the tower and the king
