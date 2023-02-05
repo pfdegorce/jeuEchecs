@@ -34,11 +34,11 @@ Game::Game(){
         }
         cout << "Loop" << endl;
 
-        if(board.in_check(nb_turn%2)){
+        /*if(board.in_check(nb_turn%2)){
             cout << "King is in check" << endl;
         } else {
             //DO SOMETHING
-        }
+        }*/
         cout << "End" <<endl;
 
         move = p_turn->give_move();
