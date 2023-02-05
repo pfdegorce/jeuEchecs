@@ -81,7 +81,7 @@ bool Piece::check_diagonal(int x1, int y1, int x2, int y2, Piece*** board){
         if((x2 - x1)>0 && (y2 - y1)<0 ){
             int i=1;
             while(i<abs(x2 - x1)){
-                if(board[x1+i][x2-i] != nullptr){
+                if(board[x1+i][y1-i] != nullptr){
                     return true;
                 }
                 i++;
