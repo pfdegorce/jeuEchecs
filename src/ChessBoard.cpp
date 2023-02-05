@@ -209,10 +209,11 @@ Piece* ChessBoard::found_piece(int x, int y){
 bool ChessBoard::in_check(bool color){
     int king_x, king_y;
     for(int i = 0; i<32 ;i++){
-        if ((typeid(*list_piece_[i]) == typeid(King)) && ((*list_piece_[i])->get_color()==color)){
+        King* king = dynamic_cast<King*>(*list_piece_[i]);
+        if (king && ((*list_piece_[i])->get_color()==color)){
             king_x = (*list_piece_[i])->get_x();
             king_y = (*list_piece_[i])->get_y();
-        }
+        }       
     }
     for(int i = 0; i<32 ;i++){
         if (((*list_piece_[i])->valid_move(king_x, king_y, board_)) && ((*list_piece_[i])->get_color()!=color)){
