@@ -262,8 +262,10 @@ bool ChessBoard::verified_castling(int x1, int y1, int x2, int y2){
 void ChessBoard::play_castling(int x1, int y1, int x2, int y2){
     Piece* piece1 = found_piece(x1, y1);
     Piece* piece2 = found_piece(x2, y2);
+    King* king = dynamic_cast<King*>(board_[x1][y1]);
+    Tower* tower = dynamic_cast<Tower*>(board_[x1][y1]);
     //if the player give the king coordinates first
-    if (typeid(board_[x1][y1]) == typeid(King)){
+    if (king){
         //if the player want to do the small castling
         if(y2>y1){
             piece1->set_y(y1+2);
@@ -279,12 +281,12 @@ void ChessBoard::play_castling(int x1, int y1, int x2, int y2){
             board_[x1][y1] = nullptr;
             board_[x1][y1-2] = piece1;
             piece2->set_y(y2+3);
-            board_[x1][y1] = nullptr;
+            board_[x2][y2] = nullptr;
             board_[x2][y2+3] = piece2;
         }
     }
     //if the player give the tower coordinates first
-    if (typeid(board_[x1][y1]) == typeid(Tower)){
+    if (tower){
         //if the player want to do the small castling
         if(y2<y1){
             piece1->set_y(y1-2);
@@ -300,7 +302,7 @@ void ChessBoard::play_castling(int x1, int y1, int x2, int y2){
             board_[x1][y1] = nullptr;
             board_[x1][y1+3] = piece1;
             piece2->set_y(y2-2);
-            board_[x1][y1] = nullptr;
+            board_[x2][y2] = nullptr;
             board_[x2][y2-2] = piece2;
         }
     }
