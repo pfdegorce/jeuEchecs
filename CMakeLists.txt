@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(Chess VERSION 1.0.0 LANGUAGES CXX)
 
+include(CTest)
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -12,5 +15,7 @@ FetchContent_MakeAvailable(googletest)
 
 set(EXE Chess)
 set(SRC ${CMAKE_SOURCE_DIR}/src)
+set(TEST ${CMAKE_SOURCE_DIR}/test)
 
 add_subdirectory(${SRC})
+add_subdirectory(${TEST})
