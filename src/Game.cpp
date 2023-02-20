@@ -20,17 +20,18 @@ Game::Game(){
     Player player2(player2_name, true);
     
     //Loop Game
-    Player* p_turn;
+    PlayerPtr p_turn;
     size_t nb_turn = 0;
     array<int, 4> move;
     bool ongoing_game=true;
     while(ongoing_game){
         nb_turn ++;
+        
         //Choose player
         if(nb_turn%2 == 0){
-            p_turn = &player2;
+            p_turn = std::make_shared<Player>(player2);
         } else {
-            p_turn = &player1;
+            p_turn = std::make_shared<Player>(player1);
         }
         //cout << "Loop" << endl;
 
@@ -80,6 +81,10 @@ bool Game::get_player() const{
 
 vector<array<int,4>> Game::get_moves() const{
     return list_moves_;
+}
+
+array<int,4> Game::get_moves(int i) const{
+    return list_moves_[i];
 }
 
 void Game::add_move(array<int,4> move){
