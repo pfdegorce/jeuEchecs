@@ -11,4 +11,4 @@ public:
 };
 
 
-typedef std::shared_ptr<Queen> Queen;
+typedef std::shared_ptr<Queen> QueenPtr;

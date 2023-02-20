@@ -30,4 +30,4 @@ public:
     void move(int x, int y);
 };
 
-typedef std::shared_ptr<Piece> Piece;
+typedef std::shared_ptr<Piece> PiecePtr;

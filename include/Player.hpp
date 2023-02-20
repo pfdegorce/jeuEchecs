@@ -18,4 +18,4 @@ public:
     void transform(char& x, char& y);
 };
 
-typedef std::shared_ptr<Player> Player;
+typedef std::shared_ptr<Player> PlayerPtr;

@@ -14,8 +14,12 @@ public:
     Game(ChessBoard chessboard, bool player, std::vector<std::array<int,4>> list_moves);
     Game();
     ~Game() = default;
+    
+    //Getter
     bool get_player() const;
     std::vector<std::array<int,4>> get_moves() const;
+    
+    //Methods
     void add_move(std::array<int,4> move);
     //bool in_check();
     //bool verified_castleling(int x1, int y1, int x2, int y2);

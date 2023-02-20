@@ -8,10 +8,9 @@ Game::Game(){
     //Init Board
     ChessBoard board;
     board.print();
-    bool ongoing_game=true;
     vector<array<int,4>> list_moves = {};
 
-    //Init Players
+    //Init Player
     string player1_name, player2_name;
     cout << "White player name: "<< endl;
     cin >> player1_name;
@@ -24,6 +23,7 @@ Game::Game(){
     Player* p_turn;
     size_t nb_turn = 0;
     array<int, 4> move;
+    bool ongoing_game=true;
     while(ongoing_game){
         nb_turn ++;
         //Choose player

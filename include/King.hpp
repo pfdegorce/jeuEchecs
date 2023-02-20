@@ -10,4 +10,4 @@ public:
     bool valid_move(int x, int y, Piece*** board);
 };
 
-typedef std::shared_ptr<King> King;
+typedef std::shared_ptr<King> KingPtr;
