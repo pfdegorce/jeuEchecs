@@ -29,3 +29,5 @@ public:
     bool check_lines(int x1, int y1, int x2, int y2, Piece*** board);
     void move(int x, int y);
 };
+
+typedef std::shared_ptr<Piece> Piece;

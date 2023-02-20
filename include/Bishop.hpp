@@ -9,3 +9,5 @@ public:
     ~Bishop() = default;
     bool valid_move(int x, int y, Piece*** board);
 };
+
+typedef std::shared_ptr<Bishop> BishopPtr;
